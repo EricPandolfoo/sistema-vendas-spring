@@ -15,15 +15,7 @@ public class VendasApplication {
     @Value("${spring.application.name}")
     private String applicationName;
 
-    @Cachorro
-    private Animal animal;
 
-    @Bean(name = "executarAnimal")
-    public CommandLineRunner executar() {
-        return args -> {
-            this.animal.fazerBarulho();
-        };
-    }
 
     @GetMapping("/hello")
     public String helloWord() {
