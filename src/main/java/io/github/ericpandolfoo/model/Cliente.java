@@ -1,6 +1,5 @@
 package io.github.ericpandolfoo.model;
 
-import io.github.ericpandolfoo.reposisory.ClientesRepository;
 
 public class Cliente {
     private String nome;
