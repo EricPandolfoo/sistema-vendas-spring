@@ -31,6 +31,7 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+        <!-- H2 BANCO DE DADOS WEB -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
