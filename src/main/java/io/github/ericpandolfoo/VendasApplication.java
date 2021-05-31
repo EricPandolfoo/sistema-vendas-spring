@@ -22,6 +22,8 @@ public class VendasApplication {
         SpringApplication.run(VendasApplication.class, args);
     }
 
+
+
    /* @Bean
     public CommandLineRunner commandLineRunner(
             @Autowired ClientesRepository clientesRepository,

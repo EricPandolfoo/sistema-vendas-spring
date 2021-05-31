@@ -11,6 +11,7 @@ import io.github.ericpandolfoo.service.impl.PedidoService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
@@ -31,7 +32,7 @@ public class PedidoController {
 
     @PostMapping(value = "/create")
     @ResponseStatus(CREATED)
-    public Integer createOrder(@RequestBody PedidoDTO dto) {
+    public Integer createOrder(@RequestBody @Valid PedidoDTO dto) {
         Pedido pedido = service.salvar(dto);
         return pedido.getId();
     }
@@ -50,11 +51,11 @@ public class PedidoController {
 
     @PatchMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    public void updateStatus(@PathVariable("id") Integer id,
-                             @RequestBody AtualizacaoStatusPedidoDTO dto) {
-        String novoStatus = dto.getNovoStatus();
-        service.atualizaStatus(id, StatusPedido.valueOf(novoStatus));
+    public void updateStatusOrder(@PathVariable("id") Integer id,
+                                  @RequestBody AtualizacaoStatusPedidoDTO dto) {
+        service.atualizarStatusPedido(id, StatusPedido.valueOf(dto.getNovoStatus()));
     }
+
 
     private InformacoesPedidoDTO converterPedido(Pedido pedido) {
         return InformacoesPedidoDTO
