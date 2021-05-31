@@ -2,6 +2,8 @@ package io.github.ericpandolfoo.rest.controller;
 
 import io.github.ericpandolfoo.domain.entity.ItemPedido;
 import io.github.ericpandolfoo.domain.entity.Pedido;
+import io.github.ericpandolfoo.domain.enums.StatusPedido;
+import io.github.ericpandolfoo.rest.dto.AtualizacaoStatusPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.InformacaoItemPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.InformacoesPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.PedidoDTO;
@@ -46,6 +48,14 @@ public class PedidoController {
     }
 
 
+    @PatchMapping("/{id}")
+    @ResponseStatus(NO_CONTENT)
+    public void updateStatus(@PathVariable("id") Integer id,
+                             @RequestBody AtualizacaoStatusPedidoDTO dto) {
+        String novoStatus = dto.getNovoStatus();
+        service.atualizaStatus(id, StatusPedido.valueOf(novoStatus));
+    }
+
     private InformacoesPedidoDTO converterPedido(Pedido pedido) {
         return InformacoesPedidoDTO
                 .builder()
@@ -65,13 +75,12 @@ public class PedidoController {
         }
 
         return items.stream().map(
-                itemPedido ->  InformacaoItemPedidoDTO
-                            .builder()
-                            .descricao(itemPedido.getProduto().getDescricao())
-                            .precoUnitario(itemPedido.getProduto().getPreco())
-                            .quantidade(itemPedido.getQuantidade())
-                            .build()
-                ).collect(Collectors.toList());
-
+                itemPedido -> InformacaoItemPedidoDTO
+                        .builder()
+                        .descricao(itemPedido.getProduto().getDescricao())
+                        .precoUnitario(itemPedido.getProduto().getPreco())
+                        .quantidade(itemPedido.getQuantidade())
+                        .build()
+        ).collect(Collectors.toList());
     }
 }

@@ -9,6 +9,7 @@ import io.github.ericpandolfoo.domain.repository.ClientesRepository;
 import io.github.ericpandolfoo.domain.repository.ItemPedidoRepository;
 import io.github.ericpandolfoo.domain.repository.PedidosRepository;
 import io.github.ericpandolfoo.domain.repository.ProdutosRepository;
+import io.github.ericpandolfoo.exception.PedidoNaoEncontradoException;
 import io.github.ericpandolfoo.exception.RegraNegocioException;
 import io.github.ericpandolfoo.rest.dto.ItemPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.PedidoDTO;
@@ -60,6 +61,17 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public Optional<Pedido> getPedidoById(Integer idPedido) {
         return pedidosRepository.findByIdFetchItens(idPedido);
+    }
+
+    @Override
+    @Transactional
+    public void atualizaStatus(Integer id, StatusPedido status) {
+        pedidosRepository.findById(id)
+                .map(pedido -> {
+                    pedido.setStatusPedido(status);
+                    return pedidosRepository.save(pedido);
+                }).orElseThrow(
+                () -> new PedidoNaoEncontradoException());
     }
 
 
