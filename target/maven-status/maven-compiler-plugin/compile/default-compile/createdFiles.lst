@@ -13,6 +13,7 @@ io\github\ericpandolfoo\rest\controller\PedidoController.class
 io\github\ericpandolfoo\service\impl\PedidoService.class
 io\github\ericpandolfoo\domain\entity\Pedido.class
 io\github\ericpandolfoo\VendasApplication.class
+io\github\ericpandolfoo\config\SecurityConfig.class
 io\github\ericpandolfoo\rest\dto\InformacoesPedidoDTO.class
 io\github\ericpandolfoo\domain\repository\ItemPedidoRepository.class
 io\github\ericpandolfoo\rest\controller\ClienteController.class

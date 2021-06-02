@@ -46,7 +46,7 @@ public class PedidoServiceImpl implements PedidoService {
                         new RegraNegocioException("Cliente não encontrado, id: " + idCliente));
 
         Pedido pedido = new Pedido();
-        pedido.setTotal(dto.getTotal());
+        pedido.setTotal_pedido(dto.getTotal());
         pedido.setDataPedido(LocalDate.now());
         pedido.setCliente(cliente);
         pedido.setStatusPedido(StatusPedido.REALIZADO);

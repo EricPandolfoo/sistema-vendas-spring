@@ -31,8 +31,8 @@ public class Pedido {
     @Column(name = "data_pedido")
     private LocalDate dataPedido;
 
-    @Column(name = "total", precision = 20, scale = 2)
-    private BigDecimal total;
+    @Column(name = "total_pedido", precision = 20, scale = 2)
+    private BigDecimal total_pedido;
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;

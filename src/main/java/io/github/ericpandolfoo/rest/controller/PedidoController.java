@@ -64,7 +64,7 @@ public class PedidoController {
                 .cpf(pedido.getCliente().getCpf())
                 .dataPedido(pedido.getDataPedido().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
                 .nomeCliente(pedido.getCliente().getNome())
-                .totalPedido(pedido.getTotal())
+                .totalPedido(pedido.getTotal_pedido())
                 .status(pedido.getStatusPedido().name())
                 .items(converterItemPedido(pedido.getItens()))
                 .build();
