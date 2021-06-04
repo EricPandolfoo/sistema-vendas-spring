@@ -1,19 +1,7 @@
 package io.github.ericpandolfoo;
 
-import io.github.ericpandolfoo.domain.entity.Cliente;
-import io.github.ericpandolfoo.domain.entity.Pedido;
-import io.github.ericpandolfoo.domain.entity.Produto;
-import io.github.ericpandolfoo.domain.repository.ClientesRepository;
-import io.github.ericpandolfoo.domain.repository.PedidosRepository;
-import io.github.ericpandolfoo.domain.repository.ProdutosRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @SpringBootApplication
 public class VendasApplication {

@@ -13,7 +13,7 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("/api/clientes")
+@RequestMapping(value = "/api/clientes")
 public class ClienteController {
 
     private ClientesRepository clientesRepository;
