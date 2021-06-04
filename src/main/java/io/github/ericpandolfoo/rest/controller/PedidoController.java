@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping(value = "/api/order")
 public class PedidoController {
 
 
