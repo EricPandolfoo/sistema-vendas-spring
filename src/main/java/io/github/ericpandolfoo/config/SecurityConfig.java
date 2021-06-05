@@ -13,6 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+
         return new BCryptPasswordEncoder();
     }
 
@@ -20,26 +21,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
-                .withUser("Eric")
+                .withUser("Eric Pandolfo")
                 .password(passwordEncoder().encode("123"))
                 .roles("USER", "ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
+        http.csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("api/cliente/**")
+                    .antMatchers("/api/clientes/**")
                         .hasAnyRole("USER", "ADMIN")
-                    .antMatchers("/api/pedidos/**")
+                    .antMatchers("/api/order/**")
                         .hasAnyRole("USER", "ADMIN")
-                    .antMatchers("/api/produtos/**")
+                    .antMatchers("/api/product/**")
                         .hasRole("ADMIN")
                 .and()
-                    .httpBasic();
+                    .formLogin()
+        ;
     }
 
 
-
 }
+
+

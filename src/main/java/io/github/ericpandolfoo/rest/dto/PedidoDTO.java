@@ -2,6 +2,7 @@ package io.github.ericpandolfoo.rest.dto;
 
 import io.github.ericpandolfoo.domain.entity.Cliente;
 import io.github.ericpandolfoo.domain.entity.ItemPedido;
+import io.github.ericpandolfoo.validation.NotEmptyList;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,10 +29,12 @@ import java.util.List;
 @NoArgsConstructor
 public class PedidoDTO {
 
-    @NotNull(message = "Informe o código do cliente.")
+    @NotNull(message = "{campo.codigo-cliente.obrigatorio}")
     private Integer cliente;
-    @NotNull(message = "Campo total do pedido é obrigatório")
+
+    @NotNull(message = "{campo.total-pedido.obrigatorio}")
     private BigDecimal total;
 
+    @NotEmptyList(message = "{campo.itens-pedido.obrigatorio}")
     private List<ItemPedidoDTO> items;
 }

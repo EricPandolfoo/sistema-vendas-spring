@@ -45,7 +45,7 @@ public class ClienteController {
 
     @PostMapping(value = "/cadastrar")
     @ResponseStatus(CREATED)
-    public Cliente salvarCliente(@RequestBody Cliente cliente) {
+    public Cliente salvarCliente(@RequestBody @Valid Cliente cliente) {
         return clientesRepository.save(cliente);
     }
 
