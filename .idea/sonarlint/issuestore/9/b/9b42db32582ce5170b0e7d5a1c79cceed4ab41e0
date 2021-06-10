@@ -1,0 +1,7 @@
+
+N
+java:S1128	"3Remove this unused import 'javax.validation.Valid'.(æ¤ñ÷úÿÿÿÿ
+W
+java:S1128
+"BRemove this unused import 'javax.validation.constraints.NotEmpty'.(ÿÿör
+l	java:S116#"WRename this field "total_pedido" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§óÍý

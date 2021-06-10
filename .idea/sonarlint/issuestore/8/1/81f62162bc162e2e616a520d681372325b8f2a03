@@ -1,0 +1,18 @@
+
+U
+java:S1128"8Remove this unused import 'javassist.NotFoundException'.(Šæ¶™8Ò…À/
+u
+java:S1128
+"SRemove this unused import 'org.springframework.data.crossstore.ChangeSetPersister'.(ƒ©¨ùşÿÿÿÿ8½°¾/
+\
+java:S1128"?Remove this unused import 'org.hibernate.annotations.NotFound'.(™¯äÙ8ùĞ¡/
+b
+java:S1128	"ERemove this unused import 'org.hibernate.annotations.NotFoundAction'.(Üœ±8†´¿/
+T
+java:S1128"7Remove this unused import 'io.swagger.annotations.Api'.(·¦°Î8ûÿ²/
+o	java:S1004"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óêƒ‹şÿÿÿÿ8“‚£/
+h	java:S100)"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰â’¥şÿÿÿÿ
+G
+java:S1612-",Replace this lambda with a method reference.(…şéıÿÿÿÿ
+v
+java:S1128"TRemove this unused import 'org.springframework.web.client.HttpClientErrorException'.(ğ»òøÿÿÿÿ8™ÎÊ/

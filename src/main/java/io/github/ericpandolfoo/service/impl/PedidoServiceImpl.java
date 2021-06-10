@@ -1,4 +1,4 @@
-package io.github.ericpandolfoo.service.impl.impl;
+package io.github.ericpandolfoo.service.impl;
 
 import io.github.ericpandolfoo.domain.entity.Cliente;
 import io.github.ericpandolfoo.domain.entity.ItemPedido;
@@ -13,7 +13,7 @@ import io.github.ericpandolfoo.exception.PedidoNaoEncontradoException;
 import io.github.ericpandolfoo.exception.RegraNegocioException;
 import io.github.ericpandolfoo.rest.dto.ItemPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.PedidoDTO;
-import io.github.ericpandolfoo.service.impl.PedidoService;
+import io.github.ericpandolfoo.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

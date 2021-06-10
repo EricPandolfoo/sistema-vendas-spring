@@ -1,4 +1,4 @@
-package io.github.ericpandolfoo.service.impl;
+package io.github.ericpandolfoo.service;
 
 import io.github.ericpandolfoo.domain.entity.Cliente;
 import io.github.ericpandolfoo.domain.entity.Pedido;
