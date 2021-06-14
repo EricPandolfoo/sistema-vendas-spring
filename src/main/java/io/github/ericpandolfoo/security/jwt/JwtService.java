@@ -1,5 +1,6 @@
-package io.github.ericpandolfoo;
+package io.github.ericpandolfoo.security.jwt;
 
+import io.github.ericpandolfoo.VendasApplication;
 import io.github.ericpandolfoo.domain.entity.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -24,7 +25,7 @@ public class JwtService {
     @Value("${security.jwt.chave-assinatura}")
     private String chaveAssinatura;
 
-    private String gerarToken(Usuario usuario) {
+    public String gerarToken(Usuario usuario) {
         long expString = Long.parseLong(expiracao);
         LocalDateTime dataHoraExpiracao = LocalDateTime.now().plusMinutes(expString);
         Instant instant = dataHoraExpiracao.atZone(ZoneId.systemDefault()).toInstant();
@@ -60,17 +61,5 @@ public class JwtService {
 
     public String obterLoginUsuario (String token) throws ExpiredJwtException{
         return (String) obterClaims(token).getSubject();
-    }
-
-    public static void main(String[] args) {
-        ConfigurableApplicationContext contexto =SpringApplication.run(VendasApplication.class);
-        JwtService service = contexto.getBean(JwtService.class);
-        Usuario usuario = Usuario.builder().login("Eric").build();
-        String token = service.gerarToken(usuario);
-        System.out.println(token);
-
-        boolean isTokenValido = service.tokenValido(token);
-        System.out.println("O Token esta valido? " + isTokenValido);
-        System.out.println(service.obterLoginUsuario(token));
     }
 }
