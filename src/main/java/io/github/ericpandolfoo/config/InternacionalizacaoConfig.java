@@ -1,5 +1,6 @@
 package io.github.ericpandolfoo.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,7 @@ import java.util.Locale;
 @Configuration
 public class InternacionalizacaoConfig {
 
+
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
@@ -19,7 +21,15 @@ public class InternacionalizacaoConfig {
         messageSource.setDefaultLocale(Locale.getDefault());
 
         return messageSource;
+
+/*        if (Locale.getLanguage().equals(new Locale("en").getLanguage()) {
+            ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+            messageSource.setBasename("classpath:messages_en");
+            messageSource.setDefaultEncoding("ISO-8859-1");
+            return messageSource
+        }*/
     }
+
 
     @Bean
     public LocalValidatorFactoryBean validatorFactoryBean() {

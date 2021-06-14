@@ -12,3 +12,4 @@ Stacks de Tecnologias:
 - Lombok;
 - Spring Boot Dev Tools;
 - Spring Security;
+- Token JWT

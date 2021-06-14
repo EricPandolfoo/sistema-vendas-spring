@@ -1,0 +1,7 @@
+
+I
+java:S16121",Replace this lambda with a method reference.(ôË×½8ÛØ˜/
+_
+java:S1128"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…8·Ô®/
+`
+java:S1128"CRemove this unused import 'io.github.ericpandolfoo.rest.ApiErrors'.(¯²‚á8·Ô®/

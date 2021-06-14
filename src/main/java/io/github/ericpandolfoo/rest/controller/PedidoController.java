@@ -3,13 +3,13 @@ package io.github.ericpandolfoo.rest.controller;
 import io.github.ericpandolfoo.domain.entity.ItemPedido;
 import io.github.ericpandolfoo.domain.entity.Pedido;
 import io.github.ericpandolfoo.domain.enums.StatusPedido;
+import io.github.ericpandolfoo.exception.PedidoNaoEncontradoException;
 import io.github.ericpandolfoo.rest.dto.AtualizacaoStatusPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.InformacaoItemPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.InformacoesPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.PedidoDTO;
-import io.github.ericpandolfoo.service.impl.PedidoService;
+import io.github.ericpandolfoo.service.PedidoService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.time.format.DateTimeFormatter;
@@ -37,6 +37,7 @@ public class PedidoController {
         return pedido.getId();
     }
 
+
     @GetMapping("/{id}")
     @ResponseStatus(OK)
     public InformacoesPedidoDTO getOrderById(@PathVariable("id") Integer id) {
@@ -45,17 +46,16 @@ public class PedidoController {
                 .getPedidoById(id)
                 .map(p -> converterPedido(p))
                 .orElseThrow(
-                        () -> new ResponseStatusException(NOT_FOUND, "Pedido não encontrado, id: " + id));
+                        () -> new PedidoNaoEncontradoException(id));
     }
 
 
     @PatchMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
     public void updateStatusOrder(@PathVariable("id") Integer id,
-                                  @RequestBody AtualizacaoStatusPedidoDTO dto) {
+                                  @RequestBody @Valid AtualizacaoStatusPedidoDTO dto) {
         service.atualizarStatusPedido(id, StatusPedido.valueOf(dto.getNovoStatus()));
     }
-
 
     private InformacoesPedidoDTO converterPedido(Pedido pedido) {
         return InformacoesPedidoDTO
