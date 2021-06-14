@@ -2,17 +2,12 @@ package io.github.ericpandolfoo.rest.controller;
 
 import io.github.ericpandolfoo.exception.PedidoNaoEncontradoException;
 import io.github.ericpandolfoo.exception.RegraNegocioException;
+import io.github.ericpandolfoo.exception.UsuarioRepetidoException;
 import io.github.ericpandolfoo.rest.ApiErrors;
-import io.swagger.annotations.Api;
-import javassist.NotFoundException;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.List;
@@ -33,6 +28,12 @@ public class ApplicationControllerAdvice {
     @ExceptionHandler(PedidoNaoEncontradoException.class)
     @ResponseStatus(NOT_FOUND)
     public ApiErrors handlePedidoNotFoundException(PedidoNaoEncontradoException ex) {
+        return new ApiErrors(ex.getMessage());
+    }
+
+    @ExceptionHandler(UsuarioRepetidoException.class)
+    @ResponseStatus(BAD_REQUEST)
+    public ApiErrors handleUsuarioRepetidoException(UsuarioRepetidoException ex) {
         return new ApiErrors(ex.getMessage());
     }
 
