@@ -13,3 +13,6 @@ Stacks de Tecnologias:
 - Spring Boot Dev Tools;
 - Spring Security;
 - Token JWT
+
+Ao subir o projeto, para acessar a documentação da API, acessar a seguinte URL:
+http://localhost:8080/swagger-ui.html#/

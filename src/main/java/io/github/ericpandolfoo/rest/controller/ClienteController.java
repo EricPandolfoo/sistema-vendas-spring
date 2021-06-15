@@ -2,6 +2,8 @@ package io.github.ericpandolfoo.rest.controller;
 
 import io.github.ericpandolfoo.domain.entity.Cliente;
 import io.github.ericpandolfoo.domain.repository.ClientesRepository;
+import io.github.ericpandolfoo.service.ClienteService;
+import io.github.ericpandolfoo.service.impl.ClienteServiceImpl;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
@@ -17,9 +19,11 @@ import static org.springframework.http.HttpStatus.*;
 public class ClienteController {
 
     private ClientesRepository clientesRepository;
+    private ClienteService service;
 
-    public ClienteController(ClientesRepository clientesRepository) {
+    public ClienteController(ClientesRepository clientesRepository, ClienteServiceImpl service) {
         this.clientesRepository = clientesRepository;
+        this.service = service;
     }
 
     @GetMapping(value = "/{id}")
@@ -46,7 +50,7 @@ public class ClienteController {
     @PostMapping(value = "/cadastrar")
     @ResponseStatus(CREATED)
     public Cliente salvarCliente(@RequestBody @Valid Cliente cliente) {
-        return clientesRepository.save(cliente);
+        return service.cadastrarCliente(cliente);
     }
 
 
