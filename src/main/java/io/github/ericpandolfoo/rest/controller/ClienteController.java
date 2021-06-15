@@ -33,11 +33,6 @@ public class ClienteController {
         this.service = service;
     }
 
-    @ApiOperation("Obter detalhes de um cliente")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "Cliente encontrado"),
-            @ApiResponse(code = 404, message = "Cliente não encontrado para o ID informado")
-    })
     @GetMapping(value = "/{id}")
     @ResponseStatus(OK)
     public Cliente getClienteById(@PathVariable("id") Integer id) {
@@ -59,11 +54,6 @@ public class ClienteController {
     }
 
 
-    @ApiOperation("Cadastrar um novo cliente")
-    @ApiResponses({
-            @ApiResponse(code = 201, message = "Cliente cadastrado com sucesso."),
-            @ApiResponse(code = 404, message = "Erro de validação")
-    })
     @PostMapping(value = "/cadastrar")
     @ResponseStatus(CREATED)
     public Cliente salvarCliente(@RequestBody @Valid Cliente cliente) {
