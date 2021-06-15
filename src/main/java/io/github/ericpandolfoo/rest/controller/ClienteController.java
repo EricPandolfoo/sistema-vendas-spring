@@ -4,6 +4,10 @@ import io.github.ericpandolfoo.domain.entity.Cliente;
 import io.github.ericpandolfoo.domain.repository.ClientesRepository;
 import io.github.ericpandolfoo.service.ClienteService;
 import io.github.ericpandolfoo.service.impl.ClienteServiceImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
@@ -12,9 +16,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
-import static org.springframework.http.HttpStatus.*;
+
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
+@Api("Api Clientes")
 @RequestMapping(value = "/api/clientes")
 public class ClienteController {
 
@@ -26,6 +33,11 @@ public class ClienteController {
         this.service = service;
     }
 
+    @ApiOperation("Obter detalhes de um cliente")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Cliente encontrado"),
+            @ApiResponse(code = 404, message = "Cliente não encontrado para o ID informado")
+    })
     @GetMapping(value = "/{id}")
     @ResponseStatus(OK)
     public Cliente getClienteById(@PathVariable("id") Integer id) {
@@ -47,6 +59,11 @@ public class ClienteController {
     }
 
 
+    @ApiOperation("Cadastrar um novo cliente")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "Cliente cadastrado com sucesso."),
+            @ApiResponse(code = 404, message = "Erro de validação")
+    })
     @PostMapping(value = "/cadastrar")
     @ResponseStatus(CREATED)
     public Cliente salvarCliente(@RequestBody @Valid Cliente cliente) {

@@ -2,6 +2,7 @@ package io.github.ericpandolfoo.service.impl;
 
 import io.github.ericpandolfoo.domain.entity.Cliente;
 import io.github.ericpandolfoo.domain.repository.ClientesRepository;
+import io.github.ericpandolfoo.exception.ClienteRepetidoException;
 import io.github.ericpandolfoo.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,11 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cliente cadastrarCliente(Cliente cliente) {
         cliente.setCpf(transformarCpf(cliente.getCpf()));
-        return repository.save(cliente);
+        if (!repository.existsByCpf(cliente.getCpf())) {
+            return repository.save(cliente);
+        } else {
+            throw new ClienteRepetidoException(cliente.getCpf());
+        }
     }
 
 

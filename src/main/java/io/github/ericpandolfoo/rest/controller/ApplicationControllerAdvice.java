@@ -1,9 +1,11 @@
 package io.github.ericpandolfoo.rest.controller;
 
+import io.github.ericpandolfoo.exception.ClienteRepetidoException;
 import io.github.ericpandolfoo.exception.PedidoNaoEncontradoException;
 import io.github.ericpandolfoo.exception.RegraNegocioException;
 import io.github.ericpandolfoo.exception.UsuarioRepetidoException;
 import io.github.ericpandolfoo.rest.ApiErrors;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -34,6 +36,12 @@ public class ApplicationControllerAdvice {
     @ExceptionHandler(UsuarioRepetidoException.class)
     @ResponseStatus(BAD_REQUEST)
     public ApiErrors handleUsuarioRepetidoException(UsuarioRepetidoException ex) {
+        return new ApiErrors(ex.getMessage());
+    }
+
+    @ExceptionHandler(ClienteRepetidoException.class)
+    @ResponseStatus(BAD_REQUEST)
+    public ApiErrors handleClienteRepetidoException(ClienteRepetidoException ex) {
         return new ApiErrors(ex.getMessage());
     }
 
