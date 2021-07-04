@@ -28,7 +28,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
 
-    private String transformarCpf(String cpf) {
+    public String transformarCpf(String cpf) {
         try {
             MaskFormatter maskFormatter = new MaskFormatter("###.###.###-##");
             maskFormatter.setValueContainsLiteralCharacters(false);

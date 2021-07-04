@@ -3,7 +3,7 @@
 Stacks de Tecnologias:
 
 - Java 11;
-- Junit 5;
+- Junit 4;
 - Spring Boot;
 - Spring Boot Starter Web;
 - Spring Data JPA;
