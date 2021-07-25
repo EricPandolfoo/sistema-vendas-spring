@@ -9,6 +9,7 @@ import io.github.ericpandolfoo.rest.dto.InformacaoItemPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.InformacoesPedidoDTO;
 import io.github.ericpandolfoo.rest.dto.PedidoDTO;
 import io.github.ericpandolfoo.service.PedidoService;
+import lombok.var;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
